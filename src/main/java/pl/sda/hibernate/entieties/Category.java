@@ -1,5 +1,6 @@
 package pl.sda.hibernate.entieties;
 
+import lombok.Getter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
+@Getter
 public class Category {
 
     @Id

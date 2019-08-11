@@ -8,12 +8,20 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@NamedQueries({
+        @NamedQuery(
+                name = "selectBooks",
+                query = "SELECT DISTINCT b from Book b " +
+                        "JOIN FETCH b.authors " +
+                        "JOIN FETCH b.category"
+        )
+})
 public class Book {
 
     @Id
     @GeneratedValue
     private int id;
-    @Getter
     private String title;
     @ManyToOne
     @Cascade(CascadeType.SAVE_UPDATE)

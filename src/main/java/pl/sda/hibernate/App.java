@@ -3,7 +3,7 @@ package pl.sda.hibernate;
 import pl.sda.hibernate.dao.BookDAO;
 import pl.sda.hibernate.entieties.Book;
 
-import java.util.Set;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class App {
         book.setAuthors(new HashSet<>(Arrays.asList(author)));
 
         Book insertedBook = new BookDAO().insert(book);*/
-        Set<Book> books = new BookDAO().findAll();
+        List<Book> books = new BookDAO().findAll();
         books.forEach(b -> System.out.println(b.getTitle()));
     }
 }

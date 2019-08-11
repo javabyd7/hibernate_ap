@@ -1,11 +1,12 @@
 package pl.sda.hibernate.dao;
 
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pl.sda.hibernate.HibernateUtils;
 import pl.sda.hibernate.entieties.Book;
 
-import java.util.HashSet;
+import java.util.List;
 
 public class BookDAO {
 
@@ -18,7 +19,7 @@ public class BookDAO {
         return book;
     }
 
-    public HashSet findAll() {
-        return new HashSet<>( HibernateUtils.getSession().createCriteria(Book.class).list());
+    public List<Book> findAll() {
+        return HibernateUtils.getSession().getNamedQuery("selectBooks").getResultList();
     }
 }

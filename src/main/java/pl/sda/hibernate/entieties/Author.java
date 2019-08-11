@@ -1,5 +1,6 @@
 package pl.sda.hibernate.entieties;
 
+import lombok.Getter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -10,7 +11,8 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
-public class Author{
+@Getter
+public class Author {
 
     @Id
     @GeneratedValue
