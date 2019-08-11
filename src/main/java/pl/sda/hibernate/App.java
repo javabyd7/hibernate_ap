@@ -1,31 +1,29 @@
 package pl.sda.hibernate;
 
 import pl.sda.hibernate.dao.BookDAO;
-import pl.sda.hibernate.entieties.Author;
 import pl.sda.hibernate.entieties.Book;
-import pl.sda.hibernate.entieties.Category;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Set;
 
 public class App {
     public static void main(String[] args) {
 
-        Book book = new Book();
-        book.setTitle("Opowiesc podrecznej");
+        /*Book book = new Book();
+        book.setTitle("Metafizyka zycia i smierci");
 
         Category category = new Category();
-        category.setName("Dystopia");
+        category.setName("Filozofia");
 
         book.setCategory(category);
 
         Author author = new Author();
-        author.setName("Margaret");
-        author.setLastName("Atwood");
+        author.setName("Arthur");
+        author.setLastName("Schopenhauer");
 
         book.setAuthors(new HashSet<>(Arrays.asList(author)));
 
-       Book insertedBook = new BookDAO().insertBook(book);
-        System.out.println(insertedBook.getTitle());
+        Book insertedBook = new BookDAO().insert(book);*/
+        Set<Book> books = new BookDAO().findAll();
+        books.forEach(b -> System.out.println(b.getTitle()));
     }
 }
