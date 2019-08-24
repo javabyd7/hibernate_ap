@@ -1,29 +1,41 @@
 package pl.sda.hibernate;
 
-import pl.sda.hibernate.dao.BookDAO;
-import pl.sda.hibernate.entieties.Book;
+import pl.sda.hibernate.Service.CategoryService;
+import pl.sda.hibernate.entity.Author;
+import pl.sda.hibernate.entity.Book;
+import pl.sda.hibernate.entity.Category;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class App {
-    public static void main(String[] args) {
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        CategoryService categoryService = new CategoryService();
+        BookDAO bookDAO = new BookDAO();
+        Category category = new Category("Horror");
+        Author author = new Author("Romanski","Jarek");
+        Set<Author> authors = new HashSet<>();
+        authors.add(author);
+        Book book = new Book("DUPA",category,authors);
+        bookDAO.insertBook(book);
 
-        /*Book book = new Book();
-        book.setTitle("Metafizyka zycia i smierci");
+        System.out.println("--------------------");
+        System.out.println(bookDAO.findAllBooks());
 
-        Category category = new Category();
-        category.setName("Filozofia");
+        Category category1 = new Category("Kryminal");
+        categoryService.save(category1);
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println(categoryService.findAll());
 
-        book.setCategory(category);
 
-        Author author = new Author();
-        author.setName("Arthur");
-        author.setLastName("Schopenhauer");
 
-        book.setAuthors(new HashSet<>(Arrays.asList(author)));
 
-        Book insertedBook = new BookDAO().insert(book);*/
-        List<Book> books = new BookDAO().findAll();
-        books.forEach(b -> System.out.println(b.getTitle()));
+
     }
 }

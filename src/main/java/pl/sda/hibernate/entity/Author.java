@@ -1,8 +1,6 @@
-package pl.sda.hibernate.entieties;
+package pl.sda.hibernate.entity;
 
-import lombok.Getter;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +9,21 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
-@Getter
+@NoArgsConstructor
 public class Author {
 
+    public Author(String lastName, String name) {
+        this.lastName = lastName;
+        this.name = name;
+    }
+
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private int id;
     private String lastName;
     private String name;
     @ManyToMany(mappedBy = "authors")
-    @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Book> books;
+
+
 }
