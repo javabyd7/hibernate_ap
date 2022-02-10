@@ -48,7 +48,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <hibernate>5.4.4.Final</hibernate>
+        <hibernate>5.4.24.Final</hibernate>
         <jdbc>8.0.17</jdbc>
         <lombok>1.18.8</lombok>
     </properties>
